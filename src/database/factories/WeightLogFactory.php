@@ -13,7 +13,7 @@ class WeightLogFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => 1, // 関連するユーザーIDを生成
+            'user_id' => \App\Models\User::inRandomOrder()->first()->id ?? 1,
             'date' => $this->faker->date(), // ダミーの日付
             'weight' => $this->faker->randomFloat(1, 50, 120), // 50kgから120kgの範囲で小数点1桁までの体重
             'calories' => $this->faker->numberBetween(1000, 4000), // 1000〜4000カロリー
